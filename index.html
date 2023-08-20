@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="fontawesome" href="css/fontawesome.css" />
+    <script src="js/script.js" defer></script>
+    <title>Tracc</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"></div>
+      <div class="btn-container">
+        <button class="btn-cal-daily-goal">Set Daily Goal</button>
+        <button class="btn-cal-resting-burn-rate">Set Burn Rate</button>
+        <button class="reset-day">Reset Day</button>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="info-container">
+          <div class="row">
+            <div class="card cal-limit">
+              <h2>1800</h2>
+              <p>Daily Calorie Limit</p>
+            </div>
+            <div class="card gain-loss">
+              <h2>1800</h2>
+              <p>Over/Under</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card cal-eaten">
+              <h2>1800</h2>
+              <p>Calories Consumed</p>
+            </div>
+            <div class="card cal-burned">
+              <h2>1800</h2>
+              <p>Calories Burned</p>
+            </div>
+            <div class="card cal-remaining">
+              <h2>1800</h2>
+              <p>Calories Remaining</p>
+            </div>
+          </div>
+        </div>
+        <div class="progressbar"></div>
+        <div class="data-entry-container">
+          <div class="entry-col food">
+            <input
+              type="text"
+              name=""
+              id="food-filter"
+              placeholder="Filter
+            Workouts"
+            />
+            <div class="entry-heading">
+              <h2 class="entry-heading-text">Meals</h2>
+              <button class="btn-input food-btn">Add Meal</button>
+            </div>
+            <ul class="list list-food">
+              <li class="list-element list-food">
+                <p class="list-element-p">Burger</p>
+                <div class="list-element-number food-number">500</div>
+                <button class="btn-remove">X</button>
+              </li>
+            </ul>
+          </div>
+          <div class="entry-col workout">
+            <input
+              type="text"
+              name=""
+              id="workout-filter"
+              placeholder="Filter Workouts"
+            />
+            <div class="entry-heading">
+              <h2 class="entry-heading-text">Workouts</h2>
+              <button class="btn-input workout-btn">Add Workout</button>
+            </div>
+            <ul class="list list-workout">
+              <li class="list-element list-workout">
+                <p class="list-element-p">Push Ups 10x</p>
+                <div class="list-element-number workout-number">100</div>
+                <button class="btn-remove">X</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <ul class="footer-list">
+          <li class="footer-list-element">made by: muhammad suhaib</li>
+          <li class="footer-list-element">designed by: muhammad suhaib</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
