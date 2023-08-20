@@ -225,3 +225,24 @@ input:focus {
   border: 2px solid #222;
   border-radius: 50px;
 }
+
+.settings-container {
+  border: 2px white solid;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  transition: all 3s;
+}
+.show {
+  display: flex;
+}
+.settings-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.settings-input {
+}

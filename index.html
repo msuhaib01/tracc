@@ -12,13 +12,22 @@
     <nav>
       <div class="logo"><h1>TRACC</h1></div>
       <div class="btn-container">
-        <button class="nav-btn btn-cal-daily-goal">Set Daily Goal</button>
-        <button class="nav-btn btn-cal-resting-burn-rate">Set Burn Rate</button>
+        <button class="nav-btn btn-cal-daily-goal">Settings</button>
         <button class="nav-btn reset-day">Reset Day</button>
       </div>
     </nav>
     <main>
       <div class="container">
+        <div class="settings-container">
+          <form class="settings-form goal" action="">
+            <input class="settings-input goal" type="number" name="" id="" />
+            <button type="submit">Set Goal</button>
+          </form>
+          <form class="settings-form rate" action="">
+            <input class="settings-input rate" type="number" name="" id="" />
+            <button type="submit">Set Rate</button>
+          </form>
+        </div>
         <div class="info-container">
           <div class="row">
             <div class="card cal-goal">
@@ -75,15 +84,7 @@
               />
               <button type="submit" class="btn-input food-btn">Add</button>
             </form>
-            <ul class="list list-food">
-              <li class="list-element list-food">
-                <p class="list-element-p">Burger</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number food-number">500</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-            </ul>
+            <ul class="list list-food"></ul>
           </div>
           <div class="entry-col workout">
             <div class="entry-heading">
@@ -104,43 +105,7 @@
               />
               <button type="submit" class="btn-input workout-btn">Add</button>
             </form>
-            <ul class="list list-workout">
-              <li class="list-element list-workout">
-                <p class="list-element-p">Push Ups 10x</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number workout-number">100</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-              <li class="list-element list-workout">
-                <p class="list-element-p">Push Ups 10x</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number workout-number">100</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-              <li class="list-element list-workout">
-                <p class="list-element-p">Push Ups 10x</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number workout-number">100</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-              <li class="list-element list-workout">
-                <p class="list-element-p">Push Ups 10x</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number workout-number">100</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-              <li class="list-element list-workout">
-                <p class="list-element-p">Push Ups 10x</p>
-                <div class="list-element-left-side">
-                  <div class="list-element-number workout-number">100</div>
-                  <button class="btn-remove">X</button>
-                </div>
-              </li>
-            </ul>
+            <ul class="list list-workout"></ul>
           </div>
         </div>
       </div>
