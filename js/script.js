@@ -1,7 +1,64 @@
+class Storage {
+  static getCalorieGoal() {
+    const defaultGoal = 500;
+    let calorieGoal;
+    if (localStorage.getItem("calorieGoal") === null) {
+      calorieGoal = defaultGoal;
+    } else {
+      calorieGoal = +localStorage.getItem("calorieGoal");
+    }
+    return calorieGoal;
+  }
+  static setCalorieGoal(calorieGoal) {
+    localStorage.setItem("calorieGoal", calorieGoal);
+  }
+  static getRestingBurnRate() {
+    const defaultRestingBurnRate = -2000;
+    let restingBurnRate;
+    if (localStorage.getItem("restingBurnRate") === null) {
+      restingBurnRate = defaultRestingBurnRate;
+    } else {
+      restingBurnRate = +localStorage.getItem("restingBurnRate");
+    }
+    return restingBurnRate;
+  }
+  static setRestingBurnRate(restingBurnRate) {
+    localStorage.setItem("restingBurnRate", restingBurnRate);
+  }
+  static getMeals() {
+    const defaultMealsArr = [];
+    let mealsArr;
+    if (localStorage.getItem("mealsArr") === null) {
+      mealsArr = defaultMealsArr;
+      console.log("FALSENULL");
+    } else {
+      mealsArr = JSON.parse(localStorage.getItem("mealsArr"));
+    }
+    return mealsArr;
+  }
+  static setMeals(mealsArr) {
+    localStorage.setItem("mealsArr", JSON.stringify(mealsArr));
+  }
+  static getWorkouts() {
+    const defaultWorkoutsArr = [];
+    let workoutsArr;
+    if (localStorage.getItem("workoutsArr") === null) {
+      workoutsArr = defaultWorkoutsArr;
+      console.log("FALSENULL");
+    } else {
+      workoutsArr = JSON.parse(localStorage.getItem("workoutsArr"));
+    }
+    return workoutsArr;
+  }
+  static setWorkouts(workoutsArr) {
+    localStorage.setItem("workoutsArr", JSON.stringify(workoutsArr));
+  }
+}
+
 class CalorieTracker {
   constructor() {
-    this._calorieGoal = 500;
-    this._restingCalBurnRate = -2000;
+    this._calorieGoal = Storage.getCalorieGoal();
+    this._restingCalBurnRate = Storage.getRestingBurnRate();
     this._totalCalories = 0;
     this._totalCalConsumed = 0;
     this._totalCalBurned = 0;
@@ -10,9 +67,26 @@ class CalorieTracker {
       -this._calorieGoal + this._totalCalories + this._restingCalBurnRate;
     console.log(this._calRemaining);
 
-    this._meals = [];
-    this._workouts = [];
+    this._meals = Storage.getMeals();
+    this._updateDomMeal();
+    this._workouts = Storage.getWorkouts();
+    this._updateDataFromArr();
     this._render();
+  }
+  //
+  _updateDataFromArr() {
+    this._meals.forEach((meal) => {
+      this._totalCalories += meal.calories;
+      this._totalCalConsumed += meal.calories;
+      this._calRemaining =
+        -this._calorieGoal + this._totalCalories + this._restingCalBurnRate;
+    });
+    this._workouts.forEach((workout) => {
+      this._totalCalories -= workout.calories;
+      this._totalCalBurned += workout.calories;
+      this._calRemaining =
+        -this._calorieGoal + this._totalCalories + this._restingCalBurnRate;
+    });
   }
   // public methods
   reset() {
@@ -29,9 +103,19 @@ class CalorieTracker {
     this._meals = [];
     this._workouts = [];
     this._render();
+    document.querySelector(".list-workout").innerHTML = "";
+    document.querySelector(".list-food").innerHTML = "";
+
+    // storage reset
+    Storage.setCalorieGoal(500);
+    Storage.setRestingBurnRate(-2000);
+    Storage.setMeals(this._meals);
+    Storage.setWorkouts(this._workouts);
   }
   addMeal(meal) {
     this._meals.push(meal);
+    Storage.setMeals(this._meals);
+
     this._totalCalories += meal.calories;
     this._totalCalConsumed += meal.calories;
     this._calRemaining =
@@ -41,6 +125,8 @@ class CalorieTracker {
   }
   addWorkout(workout) {
     this._workouts.push(workout);
+    Storage.setWorkouts(this._workouts);
+
     this._totalCalories -= workout.calories;
     this._totalCalBurned += workout.calories;
     this._calRemaining =
@@ -69,6 +155,7 @@ class CalorieTracker {
   }
   _removeFromListMeal(mealObj) {
     this._meals.splice(mealObj, 1);
+    Storage.setMeals(this._meals);
   }
   _recalculateWorkout(workoutObj) {
     console.log(workoutObj);
@@ -80,11 +167,13 @@ class CalorieTracker {
   }
   _removeFromListWorkout(workoutObj) {
     this._workouts.splice(workoutObj, 1);
+    Storage.setWorkouts(this._workouts);
   }
   _removeDomWorkout(li) {
     li.remove();
   }
   _updateDomMeal() {
+    console.log("BANG", this._meals);
     const mealList = document.querySelector(".list-food");
     mealList.innerHTML = "";
     this._meals.forEach((meal) => {
@@ -172,6 +261,8 @@ class CalorieTracker {
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
     this._displayProgressBar();
+    this._updateDomMeal();
+    this._updateDomWorkout();
   }
 }
 class Meal {
@@ -229,6 +320,7 @@ class App {
       return;
     }
     this._tracker._calorieGoal = goalInteger;
+    Storage.setCalorieGoal(goalInteger);
     this._tracker._render();
     console.log("goal");
   }
@@ -241,6 +333,8 @@ class App {
       return;
     }
     this._tracker._restingCalBurnRate = rateInteger;
+    Storage.setRestingBurnRate(rateInteger);
+
     this._tracker._render();
 
     console.log("rate");
