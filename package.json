@@ -1,8 +1,8 @@
 {
-  "name": "web_pack_testing",
+  "name": "tracc",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Bulk Cut Tracker",
+  "main": "app.js",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve"

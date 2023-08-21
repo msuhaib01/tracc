@@ -1,12 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script defer src="bundle.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <title>Tracc</title>
   </head>
   <body>
-    <h1><%= htmlWebpackPlugin.options.title %></h1>
+    <nav>
+      <div class="logo"><h1>TRACC</h1></div>
+      <div class="btn-container">
+        <button class="nav-btn btn-cal-daily-goal">Settings</button>
+        <button class="nav-btn reset-day">Reset Day</button>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="settings-container">
+          <form class="settings-form goal" action="">
+            <input class="settings-input goal" type="number" name="" id="" />
+            <button type="submit">Set Goal</button>
+          </form>
+          <form class="settings-form rate" action="">
+            <input class="settings-input rate" type="number" name="" id="" />
+            <button type="submit">Set Rate</button>
+          </form>
+        </div>
+        <div class="info-container">
+          <div class="row">
+            <div class="card cal-goal">
+              <h2>&nbsp</h2>
+              <p>Daily Calorie Surplus Goal</p>
+            </div>
+            <div class="card gain-loss">
+              <h2>&nbsp</h2>
+              <p>Net gain loss</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card cal-eaten">
+              <h2>&nbsp</h2>
+              <p>Calories Consumed</p>
+            </div>
+            <div class="card cal-burned">
+              <h2>&nbsp</h2>
+              <p>Calories Burned</p>
+            </div>
+            <div class="card cal-remaining">
+              <h2>&nbsp</h2>
+              <p>Calories Remaining</p>
+            </div>
+          </div>
+        </div>
+        <div class="progressbar">
+          <div class="base">
+            <div class="base-left">
+              <div class="base-left-color"></div>
+            </div>
+            <div class="base-right">
+              <div class="base-right-color"></div>
+            </div>
+          </div>
+        </div>
+        <div class="data-entry-container">
+          <div class="entry-col food">
+            <div class="entry-heading">
+              <h2 class="entry-heading-text">Meals</h2>
+            </div>
+            <form class="inputs inputs-meals-form">
+              <input
+                type="text"
+                name=""
+                id="food-input"
+                placeholder="Enter Food..."
+              />
+              <input
+                type="text"
+                name=""
+                id="food-cal-input"
+                placeholder="Enter calories consumed..."
+              />
+              <button type="submit" class="btn-input food-btn">Add</button>
+            </form>
+            <ul class="list list-food"></ul>
+          </div>
+          <div class="entry-col workout">
+            <div class="entry-heading">
+              <h2 class="entry-heading-text">Workouts</h2>
+            </div>
+            <form class="inputs inputs-workout-form">
+              <input
+                type="text"
+                name=""
+                id="workout-input"
+                placeholder="Enter Workout..."
+              />
+              <input
+                type="text"
+                name=""
+                id="workout-cal-input"
+                placeholder="Enter calories burned..."
+              />
+              <button type="submit" class="btn-input workout-btn">Add</button>
+            </form>
+            <ul class="list list-workout"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <ul class="footer-list">
+          <li class="footer-list-element">made by: muhammad suhaib</li>
+          <li class="footer-list-element">designed by: muhammad suhaib</li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>
